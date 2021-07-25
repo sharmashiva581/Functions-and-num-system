@@ -1,0 +1,38 @@
+import java.util.*;
+  
+  public class Main{
+  
+  public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+      int n = scn.nextInt();
+      int sourceBase = scn.nextInt();
+     int  destBase= scn.nextInt();
+     int decNo = AnyBaseToDecimal(n ,  sourceBase);
+     DecimalToAnyBase( decNo ,  destBase );
+   }   
+   public static int AnyBaseToDecimal(int n , int sb){
+       int ans = 0;
+       int pow = 1;
+       while(n > 0){
+           int rem = n % 10 ;
+           n = n / 10 ;
+           ans += pow * rem;
+           pow = pow * sb;
+       }
+       return ans;
+   }
+   public static void DecimalToAnyBase(int decNo , int destBase ){
+       int FinalAns = 0;
+       int pow = 1;
+       
+       while(decNo > 0){
+           int rem = decNo % destBase;
+           decNo = decNo / destBase;
+           FinalAns += rem * pow;
+           pow = pow *10;
+       }
+       
+       System.out.print(FinalAns);
+   }
+   
+  }
